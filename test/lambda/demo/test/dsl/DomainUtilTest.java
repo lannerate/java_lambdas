@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import lambda.demo.dsl.Matcher;
+import lambda.demo.dsl.Matchers;
 import lambda.demo.dsl.Student;
 import lambda.demo.dsl.Teacher;
 
@@ -51,6 +53,9 @@ public class DomainUtilTest {
       //using Optional<T>
       assertThat( find( students, age( gt( 18 ) ) ).isPresent(), is(true) );
       assertThat( find( students, name( contains("hui") ) ).isPresent(), is( true ) );
+      assertThat( find( students, name(ignoringCase(Matchers::start, "hui"))).isPresent(), is(true));
+
+
     }
     
     @Test

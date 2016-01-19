@@ -29,5 +29,13 @@ public final class Matchers {
   public static Matcher<String> contains(String subStr){
     return str -> str.contains( subStr );
   }
+
+  public static Matcher<String> start(String subStr){
+    return str -> str.startsWith( subStr );
+  }
+
+  public static Matcher<String> ignoringCase(Function<String, Matcher<String>> m, String subStr){
+    return str -> m.apple( subStr.toLowerCase() ).matches( str.toLowerCase() );
+  }
   
 }
