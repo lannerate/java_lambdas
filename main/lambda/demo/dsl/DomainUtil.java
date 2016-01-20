@@ -1,9 +1,8 @@
 package lambda.demo.dsl;
 
-import java.lang.System;
-import java.util.Optional;
-
 import lambda.demo.dsl.v2.StudentPredicate;
+
+import java.util.Optional;
 
 public class DomainUtil {
   

@@ -1,24 +1,20 @@
 package lambda.demo.test.dsl;
 
-import static lambda.demo.dsl.DomainUtil.find;
-import static lambda.demo.dsl.HumanPredicates.age;
-import static lambda.demo.dsl.HumanPredicates.name;
-import static lambda.demo.dsl.Matchers.gt;
-import static lambda.demo.dsl.Matchers.*;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import lambda.demo.dsl.Student;
+import lambda.demo.dsl.Teacher;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import lambda.demo.dsl.Matcher;
-import lambda.demo.dsl.Matchers;
-import lambda.demo.dsl.Student;
-import lambda.demo.dsl.Teacher;
-
-import org.junit.Test;
+import static lambda.demo.dsl.DomainUtil.find;
+import static lambda.demo.dsl.HumanPredicates.age;
+import static lambda.demo.dsl.HumanPredicates.name;
+import static lambda.demo.dsl.Matchers.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 public class DomainUtilTest {
   
@@ -53,9 +49,17 @@ public class DomainUtilTest {
       //using Optional<T>
       assertThat( find( students, age( gt( 18 ) ) ).isPresent(), is(true) );
       assertThat( find( students, name( contains("hui") ) ).isPresent(), is( true ) );
-      assertThat( find( students, name(ignoringCase(Matchers::start, "hui"))).isPresent(), is(true));
+//    assertThat( find( students, name(ignoringCase(Matchers::start, "hui"))).isPresent(), is(true));
 
+      //composite principle
+      assertThat( find(students, name(startIgnoringCase("hui")) ).isPresent(), is(true) );
+      //using the simple method not()
+      assertThat( find(students, age(not(18))).isPresent(), is(true) );
+      //using any(), all()
+      assertThat(find(students, name(any(startIgnoringCase("hu")))).isPresent(), is(true));
+        assertThat(find(students, name(all(startIgnoringCase("hu")))).isPresent(), is(true));
 
+      assertThat( find(students, age(always(false))).isPresent(), is(true));
     }
     
     @Test
