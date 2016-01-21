@@ -24,6 +24,7 @@ public class StreamTest {
 
         assertEquals(Integer.valueOf(2), together.stream().min(Comparator.naturalOrder()).get());
     }
+<<<<<<< HEAD
 
     @Test
     public void should_filter_collection(){
@@ -33,4 +34,6 @@ public class StreamTest {
 
 
 
+=======
+>>>>>>> dee2fa781289547dbd3341c5730b2d36084d374e
 }
