@@ -32,5 +32,9 @@ public class StreamTest {
 
         assertEquals(99, intStream.max().getAsInt());
     }
+   
+   @Test
+   public void testPredicate(){
 
+   }
 }
