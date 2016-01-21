@@ -1,4 +1,4 @@
-package lambda.demo.test.dsl;
+package lambda.demo.test.base;
 
 import org.junit.Test;
 
