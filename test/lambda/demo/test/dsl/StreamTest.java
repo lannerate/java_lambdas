@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -22,18 +23,14 @@ public class StreamTest {
                                         .collect( toList() );
         assertEquals( Arrays.asList(1,2,3,4), together);
 
-        assertEquals(Integer.valueOf(2), together.stream().min(Comparator.naturalOrder()).get());
+        assertEquals(Integer.valueOf(1), together.stream().min(Comparator.naturalOrder()).get());
     }
-<<<<<<< HEAD
 
     @Test
-    public void should_filter_collection(){
-        List
+    public void testIntStream(){
+        IntStream intStream = IntStream.of(12, 33, 44, 66, 77, 21, 99);
+
+        assertEquals(99, intStream.max().getAsInt());
     }
 
-
-
-
-=======
->>>>>>> dee2fa781289547dbd3341c5730b2d36084d374e
 }
