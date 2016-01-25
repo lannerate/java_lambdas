@@ -81,7 +81,10 @@ public class StreamTest {
 
         Map<Boolean, List<Article>> result = articles.stream().collect( groupingBy( article ->  article.getAuthor().isMale() ));
 
-        assertEquals(1, result.get(Boolean.TRUE).size() );
+        List<Author> authors = articles.stream().map( article ->  article.getAuthor() ).collect( toList() );
 
+        assertEquals(1, result.get(Boolean.TRUE).size() );
+        assertEquals("Jack", authors.get(0).getName() );
     }
+
 }
