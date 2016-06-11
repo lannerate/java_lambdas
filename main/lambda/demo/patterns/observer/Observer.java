@@ -1,5 +1,5 @@
-public interface Subject{
-  public void registerObserver();
-  public void removeObserver();
-  public void notifyObservers();
+package lambda.demo.patterns.observer;
+
+public interface Observer {
+    void update(Object obj);
 }
