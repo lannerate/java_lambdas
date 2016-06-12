@@ -5,6 +5,7 @@ java Design principle demo
 ### FP
 * Basic lambda expression
 * Stream API
+
 ### OOD
 * SOLID Principle
 * SRP
