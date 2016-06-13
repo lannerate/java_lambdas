@@ -10,4 +10,4 @@
 	- SRP
 	- OCP
 	- Simple DSL Implementation
-	- Design Patterns (Observer pattern, Strategy pattern, Singleton pattern)
+	- Design Patterns (Observer pattern, Strategy pattern, Singleton pattern, Decorator pattern)
