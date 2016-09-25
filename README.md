@@ -1,10 +1,13 @@
-# java_lambdas
-java 1.8 lambda demo
+# Java design principle demo
 
-## The Items
-* Basic lambda expression
-* Stream API
-* SOLID Principle:
-* SRP
-* OCP
-* Simple DSL Implementation
+## Functional Programming and Object-Oriented Design
+* FP
+	- Basic lambda expression
+	- Stream API
+
+* OOD
+	- SOLID Principle
+	- SRP
+	- OCP
+	- Simple DSL Implementation
+	- Design Patterns (Observer pattern, Strategy pattern, Singleton pattern, Decorator pattern, Factory pattern)

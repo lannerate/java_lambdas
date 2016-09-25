@@ -1,5 +1,7 @@
 package lambda.test.base;
 
+import lambda.demo.base.stream.Article;
+import lambda.demo.base.stream.Author;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
@@ -9,6 +11,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 import static org.junit.Assert.assertEquals;
@@ -63,6 +66,7 @@ public class StreamTest {
         assertEquals( asList(1,2,3,4), sameOrder );
     }
 
+    @Test
     public void testOrdering(){
         List<Integer> numbers = asList(1,2,3,4);
 
@@ -76,5 +80,20 @@ public class StreamTest {
 
     }
 
+    @Test
+    public void testGrouping(){
+        List<Article> articles = asList(
+                new Article("java lambdas", new Author(false,"Jack"), true),
+                new Article("C sharp Generic", new Author(true,"Mark"), true),
+                new Article("Scala implicate", new Author(false,"Tony"), true),
+                new Article("Lisp function", new Author(false,"Richart"), true));
+
+        Map<Boolean, List<Article>> result = articles.stream().collect( groupingBy( article ->  article.getAuthor().isMale() ));
+
+        List<Author> authors = articles.stream().map( article ->  article.getAuthor() ).collect( toList() );
+
+        assertEquals(1, result.get(Boolean.TRUE).size() );
+        assertEquals("Jack", authors.get(0).getName() );
+    }
 
 }

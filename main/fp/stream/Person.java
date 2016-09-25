@@ -4,8 +4,8 @@ package fp.stream;
  * Created by apple on 9/24/16.
  */
 public class Person {
-    private String name;
-    private int age;
+    public String name;
+    public int age;
 
     public Person(){}
 
