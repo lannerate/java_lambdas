@@ -1,0 +1,53 @@
+buildscript {
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0-M2'
+    }
+}
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+compileTestJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    options.compilerArgs += '-parameters'
+}
+
+junitPlatform {
+    engines {
+
+    }
+
+    tags {
+        exclude 'slow'
+    }
+
+    logManager 'org.apache.logging.log4j.jul.LogManager'
+}
+
+dependencies {
+    //Junit jupter api and test engine implementation
+    testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
+    testRuntime("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
+
+    //support Junit3/4
+    tesCompile("junit:junit:${junit4Version}")
+    testRuntime("org.junit.vintage:junit-vintage-engine:${junitVintageVersion}")
+
+    testRuntime("org.apache.logging.log4j:log4j-core:${log4JVersion}")
+    testRuntime("org.apache.logging.log4j:log4j-jul:${log4JVersion}")
+}
+
+task wrapper(type: Wrapper) {
+    distributionUrl = 'https://services.gradle.org/distributions/gradle-2.14.1-bin.zip'
+}
