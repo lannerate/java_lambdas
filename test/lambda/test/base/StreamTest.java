@@ -1,11 +1,8 @@
 package lambda.test.base;
 
-<<<<<<< HEAD:test/lambda/demo/test/base/StreamTest.java
 import lambda.demo.base.stream.Article;
 import lambda.demo.base.stream.Author;
-=======
 import org.hamcrest.CoreMatchers;
->>>>>>> java_lambdas_branch_01:test/lambda/test/base/StreamTest.java
 import org.junit.Test;
 
 import java.util.*;
