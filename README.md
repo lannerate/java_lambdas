@@ -3,7 +3,9 @@
 ## Functional Programming and Object-Oriented Design
 * FP
 	- Basic lambda expression
+	- Buid-in interface
 	- Stream API
+	- Concurrent
 
 * OOD
 	- SOLID Principle
