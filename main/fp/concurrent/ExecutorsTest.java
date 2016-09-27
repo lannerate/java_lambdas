@@ -1,19 +1,67 @@
 package fp.concurrent;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.sql.Time;
+import java.util.concurrent.*;
 
 /**
  * Created by apple on 9/26/16.
  */
 public class ExecutorsTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
 //       testScheduledExecutorService();
 //        testSingleThreadExecutor(3);
-        testSingleThreadExecutor(7);
+//        testSingleThreadExecutor(7);
+          testFutureWithExecutor1();
+    }
+    public static void testFutureWithExecutor1() throws ExecutionException, InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+
+        Future<Integer> future = executorService.submit(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+                return 122;
+            } catch (InterruptedException e) {
+                throw new IllegalStateException("task interrupted",e);
+            }
+        });
+        executorService.shutdownNow();
+        Integer result = future.get();
+    }
+    public static void testFutureWithExecutor3() throws ExecutionException, InterruptedException, TimeoutException {
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+
+        Future<Integer> future = executorService.submit(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+                return 122;
+            } catch (InterruptedException e) {
+                throw new IllegalStateException("task interrupted",e);
+            }
+        });
+        System.out.print( future.get(3,TimeUnit.SECONDS) );
+
+    }
+
+    public static void testFutureWithExecutor2() throws ExecutionException, InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+
+        Future<Integer> future = executorService.submit(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+                return 122;
+            } catch (InterruptedException e) {
+                throw new IllegalStateException("task interrupted",e);
+            }
+        });
+
+        System.out.println("Future done: " + future.isDone());
+        Integer result = future.get();
+        System.out.println("Future done: " + future.isDone());
+
+        System.out.println("result:" + result);
+
+        executorService.shutdownNow();
     }
 
     public static void testScheduledExecutorService(){
