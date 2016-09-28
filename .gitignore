@@ -18,3 +18,4 @@ hs_err_pid*
 main/fp/buildinterface/
 s101plugin.state
 target/
+.settings
