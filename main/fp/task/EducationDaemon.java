@@ -1,8 +1,5 @@
 package fp.task;
 
-import java.util.List;
-import java.util.Objects;
-
 /**
  * Created by apple on 11/28/16.
  */

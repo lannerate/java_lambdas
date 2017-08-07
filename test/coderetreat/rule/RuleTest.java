@@ -1,10 +1,8 @@
 package coderetreat.rule;
 
-import org.junit.Test;
-
-import java.util.Arrays;
-
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 
 /**
  * Created by apple on 9/17/16. */ public class RuleTest { //		@Test
